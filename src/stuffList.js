@@ -6,19 +6,16 @@ import React from 'react';
 
 
 class stuffList extends React.Component {  
+  constructor(props){
+    super(props);
+  }
   renderData() {
-    return <div>{this.props.stuffs}</div>;
+  return <div style={{"background-color":"green", "width":"200px", "height":"100px","font-size":"2em"}}>Hello World!{this.props.stuffs}</div>;
   }
   render() {
     return (
       <div className="">
-          {this.props.stuffs.length > 0 ?
-            this.renderData()
-            :
-            <div className="">
-              No Data
-            </div>
-          }
+          {this.renderData()}
       </div>
     );
   }
