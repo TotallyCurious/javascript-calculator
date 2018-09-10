@@ -1,3 +1,7 @@
 export default {
-  stuff: ['lime','yellow','red','green','blue']
+  stuff: {
+      0:['lime','yellow','red','green','blue'],
+      display:'0.',
+      2:[],
+    }
 };
