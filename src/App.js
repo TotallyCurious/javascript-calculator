@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import PropTypes from 'prop-types';
 import StuffList from './stuffList';
+import './App.css';
 
 class App extends Component {
   render() {

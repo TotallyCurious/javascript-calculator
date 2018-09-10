@@ -1,3 +1,3 @@
 export default {
-    stuff: ['ahem','now','gyaaaan']
+  stuff: ['lime','yellow','red','green','blue']
 };
