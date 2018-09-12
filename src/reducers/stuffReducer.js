@@ -1,20 +1,23 @@
 import initialState from './initialState';
-import {
-    FETCH_STUFF,
-    RECEIVE_STUFF
-} from '../actions/actionTypes';
+import {ADD_ITEM,BTN_NUMBER,BTN_ACTION} from '../actions/actionTypes';
 
 export default function stuff(state = initialState.stuff, action) {
-    let newState;
-    switch (action.type) {
-        case FETCH_STUFF:
-            console.log('FETCH_STUFF Action')
-            return action;
-        case RECEIVE_STUFF:
-            newState = action.stuff;
-            console.log('RECEIVE_STUFF Action')
-            return newState;
-        default:
-            return state;
-    }
+  let newState = Object.assign({}, state);
+  switch (action.type) {
+    case ADD_ITEM:
+        newState[0].push(action.stuff)
+        return newState;
+
+    case BTN_NUMBER:
+        console.log(action);
+        newState[0][0]=action.btn;
+        return newState;
+
+    case BTN_ACTION:
+        newState.display += action.btn;
+        return newState;  
+
+    default:
+        return state;
+  }
 }
