@@ -23,8 +23,7 @@ class stuffList extends React.Component {
     render() {
       let handlers = this.props.stuffActions;
 
-      let buttons = ['7', '8', '9', 'C', '<-', '4', '5', '6', '*', '/', '1', '2', '3', '+', '-', '00', '0', '.', '=']
-
+      let buttons = ['7', '8', '9', 'C', '<-', '4', '5', '6', '*', '/', '1', '2', '3', '+', '-', '00', '0', '.', '=','i']
 
       return(
       <div>
