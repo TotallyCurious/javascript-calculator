@@ -1,29 +1,36 @@
 import initialState from './initialState';
-import {ADD_ITEM,BTN_NUMBER,BTN_OPERATOR,BTN_CLEAR,BTN_DECIMAL,BTN_BACKSPACE,BTN_EVALUATE} from '../actions/actionTypes';
+import {BTN_NUMBER,BTN_OPERATOR,BTN_CLEAR,BTN_DECIMAL,BTN_BACKSPACE,BTN_EVALUATE} from '../actions/actionTypes';
 
 export default function stuff(state = initialState.stuff, action) {
   let newState = Object.assign({}, state);
   switch (action.type) {
-        case ADD_ITEM:
-        newState[0].push(action.stuff)
-        return newState;
       
         case BTN_NUMBER:
-        if (newState.display.length >= 14 && !newState.startFlag){
+            if (newState.display.length >= 14 && !newState.startFlag){
+                return newState;
+            }
+            if ((action.btn == '00'|| action.btn=='0') && newState.startFlag) {
+                return newState;
+            }
+            else if(newState.startFlag){
+                newState.display = '';
+                newState.startFlag = false;
+            }
+            newState.operatorFlag = false;
+            newState.display += action.btn;
             return newState;
-        }
-        else if(newState.startFlag){
-            newState.display = '';
-            newState.startFlag = false;
-        }
-        newState.operatorFlag = false;
-        newState.display += action.btn;
-        return newState;
-            
+                
         case BTN_OPERATOR:
+            if(newState.operatorFlag){
+                newState.display = newState.display.slice(0,-1);
+                newState.display += action.btn;
+                
+            }
+            if(newState.display.slice(-1)=='.'){
+                newState.display = newState.display.slice(0,-1);
+            }
             newState.decimalFlag =false;        
             if (newState.startFlag) {
-                    newState.display = '0';
                     newState.startFlag = false;
                 }
 
@@ -31,10 +38,6 @@ export default function stuff(state = initialState.stuff, action) {
                 return newState;
             }
             else{
-                if(newState.startFlag){
-                    newState.display = '0';
-                    newState.startFlag = false;
-                }
                 newState.display += action.btn;
                 newState.operatorFlag = true;
                 return newState;              
@@ -44,7 +47,7 @@ export default function stuff(state = initialState.stuff, action) {
             newState.startFlag = true;
             newState.operatorFlag = false;
             newState.decimalFlag = false;
-            newState.display = '0.';
+            newState.display = '0';
             return newState;  
             
         case BTN_DECIMAL: 
@@ -62,7 +65,7 @@ export default function stuff(state = initialState.stuff, action) {
             case BTN_BACKSPACE:
             if (newState.display.length <= 1){
                 newState.startFlag = true;
-                newState.display = '0.';            
+                newState.display = '0';            
             }
             else{
                 newState.display = newState.display.slice(0,-1);
