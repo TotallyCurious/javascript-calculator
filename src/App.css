@@ -7,31 +7,52 @@
 }
 .calculator{
   display: block;
-  margin-top:20%;
+  margin-top:15%;
 }
 .display{
-  background-color: grey;
+  background-color: oldlace;
   margin: 0 auto;
-  /* padding:8px; */
-  width:284px; 
+  padding:0px 10px;
+  width:264px; 
   text-align: right;
   font-size: 2em;
   line-height: 0.2em;
-  border: 10px solid black;
+  border: 10px solid red;
 }
 .keypad{
-  background-color: grey;
+  background-color: orangered;
   margin: 0 auto;
   /* padding:2px; */
   width:300px; 
   height:320px;
-  border: 2px solid black;
+  border: 2px solid red;
   display:grid;
   grid-template-columns:repeat(5,1fr);
 }
 .btn{
-  border:1px solid black;
+  background-color: orangered;
+  border:1px solid red;
   font-size: 1.4em;
-  /* width:40px;
-  height:40px; */
+  color: white;
+}
+.btn:active{
+  outline: none;
+  background-color: tomato;
+}
+.info{
+  text-align: center;
+  background-color: orangered;
+  width:276px;
+  margin:0 auto;
+  padding: 10px;
+  color: white;
+  border: 4px solid red;
+  border-top: 1px solid red;
+}
+a{
+text-decoration: none;
+color: lightgoldenrodyellow;
+}
+a:hover{
+  color: white;
 }

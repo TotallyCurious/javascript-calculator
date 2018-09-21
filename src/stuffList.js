@@ -15,6 +15,10 @@ import React from 'react';
 
 class stuffList extends React.Component {
     componentWillMount() {
+        const script = document.createElement("script");
+        script.src = "https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js";
+        script.async = true;
+        document.body.appendChild(script);
     }
     componentWillUpdate(){
     }
@@ -23,29 +27,21 @@ class stuffList extends React.Component {
     render() {
       let handlers = this.props.stuffActions;
 
-      let buttons = ['7', '8', '9', 'C', '<-', '4', '5', '6', '*', '/', '1', '2', '3', '+', '-', '00', '0', '.', '=','i']
+      let buttons = [['7','seven'], ['8','eight'], ['9','nine'], ['C','clear'], ['<-','backspace'], ['4','four'], ['5','five'], ['6','six'], ['*','multiply'], ['/','divide'], ['1','one'], ['2','two'], ['3','three'], ['+','add'], ['-','subtract'], ['00','double-zero'], ['0','zero'], ['.','decimal'], ['=','equals'] ,['i','info']];
 
       return(
       <div>
         <div className='calculator'>
           <div className='display'>
-            <p>{this.props.stuff.display}</p>
+            <p id='display'>{this.props.stuff.display}</p>
           </div>
           <div className='keypad'>
-            {buttons.map((b)=><button className='btn' id={b} onClick={handlers.handleClick}>{b}</button>)}
+            {buttons.map((b)=><button className='btn' id={b[1]} onClick={handlers.handleClick}>{b[0]}</button>)}
           </div>
-        
-        </div>
-      
-      
-      
-      
-        <div className='test'>
-          <ul style={{'backgroundColor':this.props.stuff[1]}}>
-              {this.props.stuff[0].map((x)=><li>{x}</li>)}
-          </ul>
-          <button className="btn" onClick={handlers.addItem}>Add</button>
-        
+          <div className='info' style={{'display':this.props.stuff.infoFlag?'block':'none'}} >
+            <p> Coded by TotallyCurious </p>
+            <p> <a target='blank' href="https://twitter.com/totally_curious">Twitter</a> | <a target='blank' href="https://github.com/TotallyCurious/">Github</a> | <a target='blank' href="https://codepen.io/TotallyCurious/">Codepen</a> </p>
+          </div>
         </div>
       </div>
       )
