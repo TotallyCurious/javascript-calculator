@@ -4,7 +4,8 @@ export default {
       startFlag:true,
       operatorFlag:false,
       decimalFlag:false,
-      overflowFlag:false
+      overflowFlag:false,
+      infoFlag:false
 
     }
 };

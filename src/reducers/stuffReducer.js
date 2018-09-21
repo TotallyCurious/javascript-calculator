@@ -1,5 +1,5 @@
 import initialState from './initialState';
-import {BTN_NUMBER,BTN_OPERATOR,BTN_CLEAR,BTN_DECIMAL,BTN_BACKSPACE,BTN_EVALUATE} from '../actions/actionTypes';
+import {BTN_NUMBER,BTN_OPERATOR,BTN_CLEAR,BTN_DECIMAL,BTN_BACKSPACE,BTN_EVALUATE,BTN_INFO} from '../actions/actionTypes';
 
 export default function stuff(state = initialState.stuff, action) {
   let newState = Object.assign({}, state);
@@ -9,7 +9,7 @@ export default function stuff(state = initialState.stuff, action) {
             if (newState.display.length >= 14 && !newState.startFlag){
                 return newState;
             }
-            if ((action.btn == '00'|| action.btn=='0') && newState.startFlag) {
+            if ((action.btn === '00'|| action.btn==='0') && newState.startFlag) {
                 return newState;
             }
             else if(newState.startFlag){
@@ -26,7 +26,7 @@ export default function stuff(state = initialState.stuff, action) {
                 newState.display += action.btn;
                 
             }
-            if(newState.display.slice(-1)=='.'){
+            if(newState.display.slice(-1)==='.'){
                 newState.display = newState.display.slice(0,-1);
             }
             newState.decimalFlag =false;        
@@ -54,7 +54,7 @@ export default function stuff(state = initialState.stuff, action) {
             if (newState.startFlag) {
                 newState.startFlag = false;
             }
-            if (newState.display.length >= 13 || (newState.display.length>0 && newState.display.indexOf('.') >= 0 && newState.decimalFlag == true)) {
+            if (newState.display.length >= 13 || (newState.display.length>0 && newState.display.indexOf('.') >= 0 && newState.decimalFlag === true)) {
                 return newState;
             }
             else{
@@ -79,6 +79,14 @@ export default function stuff(state = initialState.stuff, action) {
             }
             catch(e){
                 newState.display = 'Syntax Error! ';
+            }
+            return newState;
+        case BTN_INFO:
+            if(newState.infoFlag){
+                newState.infoFlag = false;
+            }
+            else{
+                newState.infoFlag = true;
             }
             return newState;
         default:

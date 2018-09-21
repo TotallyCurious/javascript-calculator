@@ -38,7 +38,10 @@ class stuffList extends React.Component {
           <div className='keypad'>
             {buttons.map((b)=><button className='btn' id={b[1]} onClick={handlers.handleClick}>{b[0]}</button>)}
           </div>
-        
+          <div className='info' style={{'display':this.props.stuff.infoFlag?'block':'none'}} >
+            <p> Coded by TotallyCurious </p>
+            <p> <a target='blank' href="https://twitter.com/totally_curious">Twitter</a> | <a target='blank' href="https://github.com/TotallyCurious/">Github</a> | <a target='blank' href="https://codepen.io/TotallyCurious/">Codepen</a> </p>
+          </div>
         </div>
       </div>
       )

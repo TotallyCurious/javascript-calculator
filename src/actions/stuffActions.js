@@ -22,6 +22,8 @@ export function handleClick(e){
             return {type:types.BTN_BACKSPACE};
             case '=':
             return {type:types.BTN_EVALUATE};
+            case 'i':
+            return {type:types.BTN_INFO};
             default:
             break;
         }
